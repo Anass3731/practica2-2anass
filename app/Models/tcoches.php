@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Ttipos_motor;
 
 class tcoches extends Model
 {
@@ -14,5 +15,14 @@ class tcoches extends Model
     protected $keyType = 'string';    
     public $incrementing = false;
 
-    protected $fillable = ['matricula', 'marca', 'modelo', 'anyo', 'color'];
+   protected $fillable = ['matricula', 'marca', 'modelo', 'anyo', 'color', 'ttipos_motor_id'];
+
+public function tipoMotor() {
+    return $this->belongsTo(Ttipos_motor::class, 'ttipos_motor_id');
 }
+
+public function extras() {
+    return $this->belongsToMany(Textra::class, 'coche_extra', 'coche_matricula', 'extra_id');
+}
+
+    }

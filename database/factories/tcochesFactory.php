@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\tcoches;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\tprofessor;
+use App\Models\Ttipos_motor;
 /**
  * @extends Factory<tcoches>
  */
@@ -52,6 +53,8 @@ class tcochesFactory extends Factory
         'modelo'    => $modelo,
         'anyo'      => fake()->numberBetween(2000, 2026),
         'color'     => $color,    
+
+        'ttipos_motor_id' => Ttipos_motor::inRandomOrder()->first()?->id ?? Ttipos_motor::factory(),
         ];
     }
 }

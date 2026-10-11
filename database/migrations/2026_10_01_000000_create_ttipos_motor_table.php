@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('tcoches', function (Blueprint $table) {           
-            $table->string('color')->default("Gris");  //així potser null i no cal omplir   
- 
-            //$table->string('tractament')->default("Mr/Ms"); //o li fiquem un valor predeterminat       
+        Schema::create('ttipos_motor', function (Blueprint $table) {
+            $table->id();
+            $table->string('nombre');
+            $table->string('descripcion')->nullable();
         });
-
     }
 
     /**
@@ -24,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('ttipos_motor');
     }
 };
